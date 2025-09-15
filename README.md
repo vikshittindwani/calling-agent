@@ -82,7 +82,10 @@ cd voice-ai-agent
 - Enter Text + Phone Number + Voice.
 
 - Click Generate & Call → Twilio will call your phone and play the audio! 🎉
+- 
 
+!<img <img width="1920" height="1080" alt="Screenshot (130)" src="https://github.com/user-attachments/assets/9ddedd67-63c1-439e-ada7-09fdb5db5514" />
+/>
 ## 🔒 Security Notes
 
 Do not commit .env file to GitHub.
