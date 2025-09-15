@@ -86,6 +86,26 @@ cd voice-ai-agent
 
 !<img <img width="1920" height="1080" alt="Screenshot (130)" src="https://github.com/user-attachments/assets/9ddedd67-63c1-439e-ada7-09fdb5db5514" />
 />
+
+# 📞 Test Twilio Call
+
+This script (`test_twilio.py`) is a quick demo to **test Twilio credentials** by making a phone call.
+
+## Install dependency (only once)
+```bash
+pip install twilio python-dotenv
+```
+## 🔹 Use Case
+- Verify your **Twilio Account SID / Auth Token** are correct  
+- Place a call from your **Twilio number** to your phone  
+- Hear a sample message using Twilio’s `<Say>` feature
+  
+## RUN METHOD
+```bash
+python test_twilio.py
+```
+Run it once after setting up Twilio to confirm that your account and number are working correctly.
+
 ## 🔒 Security Notes
 
 Do not commit .env file to GitHub.
