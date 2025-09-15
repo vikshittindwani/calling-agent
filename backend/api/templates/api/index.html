@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Voice Agent — Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    textarea { width: 600px; }
+    select, input { padding: 6px; }
+    #output { white-space: pre-wrap; background: #f7f7f7; padding: 10px; margin-top: 10px; border-radius: 6px; max-width: 820px; }
+  </style>
+</head>
+<body>
+  <h1>Voice-over Call Demo</h1>
+
+  <div>
+    <label><strong>Voice:</strong></label><br>
+    <select id="voiceSelect">
+      <option value="21m00Tcm4TlvDq8ikWAM">Rachel</option>
+      <option value="EXAVITQu4vr4xnSDxMaL">Elli</option>
+      <option value="ErXwobaYiN019PkySvjV">Bella</option>
+    </select>
+  </div>
+
+  <div style="margin-top:10px">
+    <label><strong>Text to speak:</strong></label><br>
+    <textarea id="textInput" rows="6">Hello! This is a demo from my AI voice agent.</textarea>
+  </div>
+
+  <div style="margin-top:10px">
+    <label><strong>To (phone number):</strong></label><br>
+    <input id="toNumber" placeholder="+91XXXXXXXXXX" style="width:300px"/>
+  </div>
+
+  <div style="margin-top:10px">
+    <button onclick="sendCall()">Generate & Call</button>
+  </div>
+
+  <h3>Output</h3>
+  <div id="output">Status will appear here</div>
+
+<script>
+async function sendCall(){
+  document.getElementById('output').innerText = "Generating audio and triggering call... please wait.";
+  const voiceId = document.getElementById('voiceSelect').value;
+  const text = document.getElementById('textInput').value;
+  const to = document.getElementById('toNumber').value;
+
+  const payload = { voiceId, text, to };
+  try{
+    const res = await fetch('/api/generate-call/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    document.getElementById('output').innerText = JSON.stringify(data, null, 2);
+  }catch(err){
+    document.getElementById('output').innerText = 'Error: ' + err;
+  }
+}
+</script>
+</body>
+</html>
